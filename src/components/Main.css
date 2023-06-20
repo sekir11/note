@@ -1,0 +1,75 @@
+.app-main {
+  width: 70%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.app-main-note-edit,
+.app-main-note-preview {
+  padding: 25px;
+}
+
+.app-main-note-edit input,
+textarea {
+  display: block;
+  border: none;
+  margin: 0 auto 20px;
+  width: 90%;
+  height: calc(50vh - 180px);
+  padding: 10px 20px;
+  resize: none;
+  font-size: 16px;
+  border-radius: 10px;
+  background: #ebebeb;
+  box-shadow: inset 3px 3px 5px #c3c3c3, inset -3px -3px 5px #ffffff;
+}
+.app-main-note-edit input:focus,
+textarea:focus {
+  outline: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.app-main::-webkit-scrollbar {
+  display: none;
+}
+
+.app-main-note-edit input {
+  height: 50px;
+  font-size: 2rem;
+}
+
+.app-preview {
+  width: 90%;
+  overflow-y: scroll;
+  border-radius: 20px;
+  background: #ebebeb;
+  box-shadow: 5px 5px 10px #c3c3c3, -3px -3px 10px #ffffff;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.app-preview::-webkit-scrollbar {
+  display: none;
+}
+
+.preview-title {
+  padding: 25px 25px 0 25px;
+  margin: 0;
+}
+
+.markdown-preview {
+  padding: 0 25px 25px 25px;
+  line-height: 2rem;
+}
+
+.no-active-note {
+  width: 70%;
+  height: 100vh;
+  text-align: center;
+  line-height: 100vh;
+  font-size: 2rem;
+  color: #999;
+}
