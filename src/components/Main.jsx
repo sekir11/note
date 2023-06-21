@@ -32,15 +32,6 @@ const Main = ({ activeNote, onUpdateNote }) => {
           onChange={(e) => onEditNote("content", e.target.value)}
         ></textarea>
       </div>
-      <div className="app-main-note-preview">
-        <h2>プレビュー</h2>
-        <div className="app-preview">
-          <h1 className="preview-title">{activeNote.title}</h1>
-          <ReactMarkdown className="markdown-preview">
-            {activeNote.content}
-          </ReactMarkdown>
-        </div>
-      </div>
     </div>
   );
 };

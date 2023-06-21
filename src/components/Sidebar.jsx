@@ -1,5 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark, faAdd } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({
   onAddNote,
@@ -13,8 +15,12 @@ const Sidebar = ({
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
-        <h1>ノート</h1>
-        <button onClick={onAddNote}>追加</button>
+        <h1>メモ</h1>
+        <FontAwesomeIcon
+          className="add"
+          icon={faAdd}
+          onClick={onAddNote}
+        ></FontAwesomeIcon>
       </div>
       <div className="app-sidebar-notes">
         {sortedNotes.map((note) => (
@@ -27,7 +33,10 @@ const Sidebar = ({
           >
             <div className="sidebar-note-title">
               <strong>{note.title}</strong>
-              <button onClick={() => onDeleteNote(note.id)}>削除</button>
+              <FontAwesomeIcon
+                icon={faXmark}
+                onClick={() => onDeleteNote(note.id)}
+              ></FontAwesomeIcon>
             </div>
             <p>{note.content}</p>
             <small>

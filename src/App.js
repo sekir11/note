@@ -2,34 +2,46 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Main from "./components/Main";
 import Sidebar from "./components/Sidebar";
-import uuid from "react-uuid";
+import { db } from "./firebase";
+import {
+  collection,
+  addDoc,
+  deleteDoc,
+  getDocs,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 function App() {
-  const [notes, setNotes] = useState(
-    JSON.parse(localStorage.getItem("notes")) || []
-  );
+  const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+  // useEffect(() => {
+  //   localStorage.setItem("notes", JSON.stringify(notes));
+  // }, [notes]);
+  const getMemo = async () => {
+    const data = await getDocs(collection(db, "memoList"));
+    setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
 
   useEffect(() => {
-    setActiveNote(notes[0].id);
+    getMemo();
   }, []);
 
-  const onAddNote = () => {
+  const onAddNote = async () => {
     const newNote = {
-      id: uuid(),
       title: "",
       content: "",
       modDate: Date.now(),
     };
 
-    setNotes([...notes, newNote]);
+    await addDoc(collection(db, "memoList"), newNote);
+    getMemo();
+    // setNotes([...notes, newNote]);
   };
 
-  const onDeleteNote = (id) => {
+  const onDeleteNote = async (id) => {
+    await deleteDoc(doc(db, "memoList", id));
     const filterNotes = notes.filter((note) => note.id !== id);
     setNotes(filterNotes);
   };
@@ -39,15 +51,20 @@ function App() {
   };
 
   const onUpdateNote = (updatedNote) => {
-    const updateNotesArray = notes.map((note) => {
+    const updatedNotes = notes.map((note) => {
       if (note.id === updatedNote.id) {
+        updateNote(updatedNote);
         return updatedNote;
       } else {
         return note;
       }
     });
+    console.log(updatedNotes);
+    setNotes(updatedNotes);
+  };
 
-    setNotes(updateNotesArray);
+  const updateNote = async (note) => {
+    await updateDoc(doc(db, "memoList", note.id), note);
   };
 
   return (

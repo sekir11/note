@@ -11,13 +11,13 @@ button {
 .app-sidebar {
   width: 30%;
   height: 100vh;
-  border-right: 1px solid #ddd;
 }
 
 .app-sidebar-header {
   display: flex;
   justify-content: space-between;
   padding: 25px;
+  align-items: center;
 }
 
 .app-sidebar-header h1 {
@@ -34,13 +34,13 @@ button {
 }
 
 .app-sidebar-note {
-  padding: 25px;
+  padding: 10px 15px;
   cursor: pointer;
   transition: all 0.3s;
   border-radius: 20px;
   background: #ebebeb;
   box-shadow: 5px 5px 10px #c3c3c3, -3px -3px 10px #ffffff;
-  margin: 30px 20px;
+  margin: 25px 20px;
 }
 
 .sidebar-note-title {
@@ -48,12 +48,23 @@ button {
   justify-content: space-between;
 }
 
+.sidebar-note-title strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .app-sidebar-note p {
   margin: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .app-sidebar-note small {
   color: #999;
+  display: block;
+  text-align: right;
 }
 
 .app-sidebar-note:hover {
@@ -62,4 +73,13 @@ button {
 
 .app-sidebar-note.active {
   background-color: #dbdbdb;
+}
+
+svg {
+  color: #999;
+}
+
+.add {
+  font-size: 25px;
+  cursor: pointer;
 }
