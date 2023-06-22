@@ -10,7 +10,7 @@ const Login = ({ setIsAuth }) => {
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("isAuth", true);
       setIsAuth(true);
-      navigate("`${process.env.PUBLIC_URL}/home`");
+      navigate(`${process.env.PUBLIC_URL}/home`);
     });
   };
 
