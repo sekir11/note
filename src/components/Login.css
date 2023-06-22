@@ -1,0 +1,18 @@
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box h1 {
+  text-align: center;
+}
+
+.login-box button {
+  border-radius: 20px;
+  background: #ebebeb;
+  width: 30%;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #c3c3c3, -3px -3px 10px #ffffff;
+}
