@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login setIsAuth={setIsAuth}></Login>}></Route>
-        <Route path="/home" element={<Home isAuth={isAuth}></Home>}></Route>
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<Login setIsAuth={setIsAuth}></Login>}></Route>
+        <Route path={`${process.env.PUBLIC_URL}/home`} element={<Home isAuth={isAuth}></Home>}></Route>
       </Routes>
     </Router>
   );

@@ -16,7 +16,7 @@ const Sidebar = ({
 
   useEffect(() => {
     if (!isAuth) {
-      navigate("/");
+      navigate(`${process.env.PUBLIC_URL}/`);
     }
   }, []);
 
